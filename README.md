@@ -1,5 +1,5 @@
 # Asp Dot NetCore 3.0-Mvc-App with Microsoft Unity Dependencyinjection
- Asp dot net core 3.0 mvc crud  applicaoion dem
+ Asp dot net core 3.0 mvc crud  applicaoion demo
 
 This application was built on Asp.net Core 3.0 version using visual studio 2019.
 
