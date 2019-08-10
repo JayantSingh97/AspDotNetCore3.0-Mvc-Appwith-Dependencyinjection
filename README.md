@@ -16,9 +16,9 @@ in case if you are facing any kind of build error in visual studio then you can 
 # Feature demonstrated in this application are as below.
 
 1-Asp.Net Core confgiguration of 3.0 startup file.
-2-Use of Dependency Injection for avoiding and  security and vernbility threat in application.
-2-Asp.net Crud From strach
-3-Use of most new feature of (Asp.net core) & (MVC) like (DI,AttributeRouting,DataValiation,Class binding,Bootsrap application,PreventCross side scripting attacks,Remote Validation,Routeing in asp.net core mvc,asp.net core tag exmp. asp-controller asp-action etc.)
+2-Use of Dependency Injection for avoiding and  security and vulnerability threat in application.
+2-Asp.net Crud From scratch 
+3-Use of most new features of (Asp.net core) & (MVC) like (DI,AttributeRouting,DataValiation,Class binding,Bootsrap application,PreventCross side scripting attacks,Remote Validation,Routeing in asp.net core mvc,asp.net core tag exmp. asp-controller asp-action,black and white listing model fields etc.)
 
 This Application is dedicated to GitHub Community for learning and growing. 
 
