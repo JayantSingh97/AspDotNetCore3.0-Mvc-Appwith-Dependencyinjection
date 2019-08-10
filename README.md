@@ -13,7 +13,8 @@ solution
 in case if you are facing any kind of build error in visual studio then you can delete the (VS) directory in you Root Directory of application then simply reload or re launch the application. Visual studio will automatically restore all the dependencies form
 # New Get Package manger.
 
-Feature demonstrated in this application are as below.
+# Feature demonstrated in this application are as below.
+
 1-Asp.Net Core confgiguration of 3.0 startup file.
 2-Use of Dependency Injection for avoiding and  security and vernbility threat in application.
 2-Asp.net Crud From strach
