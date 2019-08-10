@@ -1,0 +1,106 @@
+﻿@model DotNetCoreMvcApp.Models.EmployeeModel
+
+@{
+    ViewData["Title"] = "EditEmployee";
+}
+
+<h4> <span class="fa fa-user"></span> Edit  Employee</h4>
+<hr />
+
+<form asp-action="EditEmployee">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-4 col-lg-6">
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <input asp-for="EmployeeId" class="form-control" />
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-6">
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-lg-6">
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-6">
+            <div class="form-group">
+                <label asp-for="DOB" class="control-label"></label>
+                <input asp-for="DOB" class="form-control" />
+                <span asp-validation-for="DOB" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-lg-6">
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-6">
+            <div class="form-group">
+                <label asp-for="Department" class="control-label"></label>
+                <input asp-for="Department" class="form-control" />
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-lg-6">
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-6">
+            <div class="form-group">
+                <label asp-for="ProfileUrl" class="control-label"></label>
+                <input asp-for="ProfileUrl" class="form-control" />
+                <span asp-validation-for="ProfileUrl" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-lg-6">
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-lg-12 text-lg-right">
+            <div class="form-group">
+
+                <button type="reset" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span> Reset Form</button>
+                <a asp-action="EmployeeBoard" class="btn  btn-sm btn-info"><span class="fa fa-home"></span>Cancel Action</a>
+                <button type="submit" class="btn  btn-sm btn-primary"><span class="fa fa-plus"></span> Save Employee</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

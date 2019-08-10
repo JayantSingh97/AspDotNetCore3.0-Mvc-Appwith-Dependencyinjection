@@ -1,0 +1,199 @@
+﻿@model IEnumerable<DotNetCoreMvcApp.Models.EmployeeModel>
+
+@{
+    ViewData["Title"] = "EmployeeBoard";
+}
+
+
+<br />
+<div class="row">
+    <div class="col-lg-5 col-sm-4 col-md-4">
+        <h4><span class="fa  fa-home"></span> Dashboard</h4>
+
+    </div>
+    <div class="col-lg-7 col-sm-8 col-md-8 text-lg-right">
+        <button type="button" class="btn btn-sm btn-outline-info" id="viewtoggler"><span class="fa fa-table" id="iconview"></span> Data View</button>
+        <a class="btn btn-sm btn-outline-success" asp-controller="Employee" asp-action="CreateEmployee"><span class="fa fa-plus"></span> Create new Employee</a>
+        <button class="btn btn-sm btn-outline-primary" id="refresh"><span class="fa fa-redo"></span> Refresh Dasboard</button>
+    </div>
+</div>
+@if (TempData["EmployeeUpdate"] != null)
+{
+    <hr />
+    <div class="row">
+        <div class="col-lg-6 col-sm-6 col-md-6 text-info text-lg-left">
+            <h6>
+                <span class="fa  fa-user"></span> You have edited details of @Html.DisplayFor(model => model.FirstOrDefault().FirstName) @Html.DisplayFor(model => model.FirstOrDefault().LastName)
+            </h6>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-md-6  text-info text-lg-right">
+            <h6><span class="fa  fa-file"></span> Employee edit history Log.@DateTime.Now.ToString()</h6>
+        </div>
+    </div>
+}
+
+@if (TempData["EmployeeCreated"] != null)
+{
+    <hr />
+    <div class="row">
+        <div class="col-lg-6 col-sm-6 col-md-6 text-success text-lg-left">
+            <h6> <span class="fa  fa-user"></span> You have successfully Created @Html.DisplayFor(model => model.FirstOrDefault().FirstName) @Html.DisplayFor(model => model.FirstOrDefault().LastName)</h6>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-md-6  text-success text-lg-right">
+            <h6><span class="fa  fa-file"></span> Employee create history Log. @DateTime.Now.ToString()</h6>
+        </div>
+    </div>
+}
+@if (TempData["EmployeeDeleted"] != null)
+{
+    <hr />
+    <div class="row">
+        <div class="col-lg-6 col-sm-6 col-md-6 text-danger text-lg-left">
+            <h6> <span class="fa  fa-user"></span> You have Deleted @ViewBag.deleteEmployee in <span class="fa fa-database"></span> DataBase.</h6>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-md-6  text-danger text-lg-right">
+            <h6><span class="fa  fa-file"></span> Employee Delete history Log. @DateTime.Now.ToString()</h6>
+        </div>
+    </div>
+}
+
+<hr />
+
+<div class="table-responsive">
+    <table class="table table-sm table-hover  table-bordered" id="tableview">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfileUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DOB)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Department)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img class="card-img-top" src="@item.ProfileUrl.ToString()" alt="Card image cap" style="width: 63px; height: 39px;" />
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.ActionLink(".", "EditEmployee", new { id = item.EmployeeId }, new { @class = "btn btn-sm btn-outline-warning fa fa-cog" }) |
+                        @Html.ActionLink(".", "GetEmployeebyid", new { id = item.EmployeeId }, new { @class = "btn btn-sm btn-outline-info fa fa-eye" }) |
+                        @Html.ActionLink(".", "DeleteEmployee", new { id = item.EmployeeId }, new { @class = "btn btn-sm btn-outline-danger fa fa-trash" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="loader" id="isloading" style="display:none;">
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw loaderalignment"></i>
+    <br>
+    <span class="sr-only">Loading...</span>
+    <span id="lodertext">Loading...</span>
+</div>
+
+<div id="cardview" style="display:none">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-sm-6 col-xs-12">
+                <div class="card">
+                    <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.ProfileUrl)" alt="Card image cap">,
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-muted"><span class="fa fa-user"></span><strong> @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</strong>  <br> </li>
+                        <li class="list-group-item text-muted"><span class="fa fa-address-book"></span> Emoloyee Id : @Html.DisplayFor(modelItem => item.EmployeeId) </li>
+                        <li class="list-group-item text-muted"><span class="fa fa-envelope"></span> Email : @Html.DisplayFor(modelItem => item.Email) </li>
+                        <li class="list-group-item text-muted"> <span class="fa fa-phone"></span> Phone : @Html.DisplayFor(modelItem => item.Phone) </li>
+                        <li class="list-group-item"><a href="~/Employee/GetEmployeebyid?id=@Html.DisplayFor(modelItem => item.EmployeeId)" class="card-link btn btn-outline-primary"><span class="fa fa-eye"></span> View Employee Details</a></li>
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+
+    $("#viewtoggler").click(function () {
+        $("#isloading").show();
+        $("#lodertext").html("Creating UI...");
+        setTimeout(function () {
+            $("#iconview").toggleClass("fa fa-table");
+            $("#iconview").toggleClass("fa fa-address-book ");
+            $("#tableview").fadeToggle();
+            $("#cardview").fadeToggle();
+            $("#lodertext").html("Loading...");
+            $("#isloading").hide();
+        }, 1000);
+    });
+
+    $("#refresh").click(function () {
+        $("#isloading").show();
+        setTimeout(function () {
+            window.location.reload(true);
+        }, 2000);
+    });
+</script>
+
+
+<!-- #region Not Required -->
+@*@using (Html.BeginForm("EditEmployee", "Employee", new { showlog = "True" }, FormMethod.Post))
+        {
+            <button class="btn btn-sm btn-outline-primary"><span class="fa fa-file"></span> Show complete Log.</button>
+    }*@
+
+
+<!-- #endregion -->

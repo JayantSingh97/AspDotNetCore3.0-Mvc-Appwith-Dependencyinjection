@@ -1,0 +1,81 @@
+﻿@model DotNetCoreMvcApp.Models.EmployeeModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div style="border:2px solid whitesmoke;text-align:center;padding:20px;">
+    <h4>@Model.FirstName @Model.LastName  information.</h4>
+    <hr />
+    <div class="row">
+        <div class="col">
+            <img class="card-img-top" src="@Model.ProfileUrl.ToString()" alt="Card image cap" style="width: 203px; height: 209px;" />
+        </div>
+    </div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.EmployeeId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProfileUrl)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.ProfileUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+    <hr />
+    <div>
+        <a asp-action="EmployeeBoard" class="btn  btn-sm btn-outline-info"><span class="fa fa-home"></span>Cancel Action</a>
+        @Html.ActionLink("Edit Employee ", "EditEmployee", new { id = Model.EmployeeId }, new { @class = "btn btn-sm btn-outline-success" })
+
+    </div>
+</div>
+
+
